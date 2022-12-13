@@ -12,6 +12,8 @@
 @prefix schema: <http://schema.org/>.
 @prefix sio: <http://semanticscience.org/resource/> .
 @prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 schema:State a owl:Class;
     rdfs:label "State".
