@@ -1,0 +1,72 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix data: <https://raw.githubusercontent.com/MADStudioNU/lesmiserables-character-network/master/parsed_data/> .
+@prefix sdd-data: <https://raw.githubusercontent.com/whyiskg/whyis_census_demo/main/data/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix csvw: <http://www.w3.org/ns/csvw#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dataset: <http://purl.org/whyis/local/dataset/> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix pv: <http://purl.org/net/provenance/ns#> .
+@prefix sdd: <http://purl.org/twc/sdd/> .
+@prefix ov: <http://open.vocab.org/terms/> .
+@prefix schema: <http://schema.org/>.
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+schema:Person a owl:Class;
+    rdfs:label "Person".
+
+sio:Chapter a owl:Class;
+    rdfs:label "Chapter".
+
+sio:Interacting a owl:Class;
+    rdfs:label "Interaction".
+
+sio:hasPart a owl:ObjectProperty;
+    rdfs:label "has part".
+
+sio:hasParticipant a owl:ObjectProperty;
+    rdfs:label "has participant".
+
+rdfs:label a owl:DatatypeProperty;
+    rdfs:label "label"
+
+sio:isLocatedIn a owl:ObjectProperty;
+    rdfs:label "is located in".
+
+sio:Count a owl:Class;
+    rdfs:label "Count".
+
+sio:TimeInterval a owl:Class;
+    rdfs:label "Time Interval".
+
+dataset:les-miserables a dcat:Dataset;
+    dcterms:title "Les Miserables Character Network Data";
+    dcterms:description "An update to the network of characters in Victor Hugo's Les Miserables first encoded by Professor Donald Knuth, as part of the Stanford Graph Base (SGB) as file "jean.dat".";
+    dcat:distribution data:jean-complete-edge.csv, data:jean-complete-node.csv,
+      sdd-data:les-miserables-scenes-sdd.xlsx, sdd-data:les-miserables-characters-sdd.xlsx;
+    dcterms:publisher <https://github.com/MADStudioNU>;
+    void:uriSpace "http://purl.org/whyis/local/les-miserables/".
+
+data:jean-complete-edge.csv a pv:File;
+    rdfs:label "Les Miserables Character Encounters By Chapter";
+    csvw:delimiter ",";
+    ov:hasContentType "text/csv";
+    dcterms:conformsTo sdd-data:les-miserables-scenes-sdd.xlsx.
+
+sdd-data:les-miserables-scenes-sdd.xlsx
+    a pv:File, sdd:SemanticDataDictionary;
+    rdfs:label "Semantic Data Dictionary for Les Miserables Character Encounters".
+
+data:jean-complete-nodes.csv a pv:File;
+    rdfs:label "Les Miserables Characters";
+    csvw:delimiter ",";
+    ov:hasContentType "text/csv";
+    dcterms:conformsTo sdd-data:les-miserables-characters-sdd.xlsx.
+
+sdd-data:les-miserables-characters-sdd.xlsx
+    a pv:File, sdd:SemanticDataDictionary;
+    rdfs:label "Semantic Data Dictionary for Les Miserables Characters".
