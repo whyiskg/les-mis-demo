@@ -32,7 +32,7 @@ sio:hasParticipant a owl:ObjectProperty;
     rdfs:label "has participant".
 
 rdfs:label a owl:DatatypeProperty;
-    rdfs:label "label"
+    rdfs:label "label".
 
 sio:isLocatedIn a owl:ObjectProperty;
     rdfs:label "is located in".
@@ -45,7 +45,7 @@ sio:TimeInterval a owl:Class;
 
 dataset:les-miserables a dcat:Dataset;
     dcterms:title "Les Miserables Character Network Data";
-    dcterms:description "An update to the network of characters in Victor Hugo's Les Miserables first encoded by Professor Donald Knuth, as part of the Stanford Graph Base (SGB) as file "jean.dat".";
+    dcterms:description "An update to the network of characters in Victor Hugo's Les Miserables first encoded by Professor Donald Knuth, as part of the Stanford Graph Base (SGB) as file 'jean.dat'.";
     dcat:distribution data:jean-complete-edge.csv, data:jean-complete-node.csv,
       sdd-data:les-miserables-scenes-sdd.xlsx, sdd-data:les-miserables-characters-sdd.xlsx;
     dcterms:publisher <https://github.com/MADStudioNU>;
@@ -61,7 +61,7 @@ sdd-data:les-miserables-scenes-sdd.xlsx
     a pv:File, sdd:SemanticDataDictionary;
     rdfs:label "Semantic Data Dictionary for Les Miserables Character Encounters".
 
-data:jean-complete-nodes.csv a pv:File;
+data:jean-complete-node.csv a pv:File;
     rdfs:label "Les Miserables Characters";
     csvw:delimiter ",";
     ov:hasContentType "text/csv";
