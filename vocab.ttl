@@ -16,3 +16,9 @@
 @prefix whyis: <http://vocab.rpi.edu/whyis/> .
 @prefix bibo: <http://purl.org/ontology/bibo/> .
 
+@prefix schema: <http://schema.org/>.
+
+schema:Person a owl:Class;
+  whyis:hasOutgoing "outgoing_person.json";
+  whyis:hasIncoming "incoming_person.json";
+.

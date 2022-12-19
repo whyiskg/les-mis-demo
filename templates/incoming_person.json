@@ -1,0 +1,12 @@
+{{'''graph ?assertion {
+      {
+         ?article sio:hasParticipant ?target.
+         ?article sio:hasParticipant ?source.
+         ?article a ?link_type.
+      }
+    }
+    bind(?article as ?link)
+    bind(0.8 as ?probability)
+    filter (!sameTerm(?source, ?target) && isIRI(?source))
+
+''' | probit(target=this.identifier) | tojson }}

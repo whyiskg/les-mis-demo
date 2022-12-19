@@ -1,0 +1,49 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "mark": {
+    "type": "area",
+    "interpolate": "natural",
+    "tooltip": true
+  },
+  "encoding": {
+    "x": {
+      "field": "book",
+      "type": "quantitative"
+    },
+    "y": {
+      "field": "PersonA",
+      "type": "ordinal",
+      "aggregate": "count",
+      "axis": null,
+      "stack": "center"
+    },
+    "color": {
+      "field": "PersonA",
+      "scale": {
+        "scheme": "category20b"
+      }
+    }
+  },
+  "config" : {
+    "legend" : { "disable" : true }
+  },
+  "width": 600,
+  "height": 400
+}
+
+
+PREFIX sio: <http://semanticscience.org/resource/>
+PREFIX schema: <http://schema.org/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT DISTINCT ?PersonA ?PersonB ?timepoint ?chapter (replace(?chapter, ".[0-9]+$","") as ?book) (replace(?chapter, ".[0-9]+.[0-9]+$","") as ?volume)
+WHERE {
+  ?interaction a sio:Interacting;
+               sio:existsAt [ a sio:TimeInterval; sio:hasValue ?timepoint];
+               sio:hasParticipant ?a, ?b.
+  filter(?a != ?b)
+  ?a a schema:Person; rdfs:label ?PersonA.
+  ?b a schema:Person; rdfs:label ?PersonB.
+  ?c sio:hasPart ?interaction; a sio:Chapter; rdfs:label ?chapter.
+
+} order by ?timepoint
