@@ -2,6 +2,7 @@
       {
          ?article sio:hasParticipant ?target.
          ?article sio:hasParticipant ?source.
+         ?article sio:hasOutput ?foobar.
          ?article a ?link_type.
       }
     }

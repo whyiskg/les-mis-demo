@@ -15,6 +15,7 @@
 @prefix owl:   <http://www.w3.org/2002/07/owl#> .
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ontology: <http://purl.org/whyis/local/les-miserables/ontology/>.
 
 schema:Person a owl:Class;
     rdfs:label "Person".
@@ -42,6 +43,69 @@ sio:Count a owl:Class;
 
 sio:TimeInterval a owl:Class;
     rdfs:label "Time Interval".
+
+
+ontology:ABC a owl:Class;
+    rdfs:subClassOf schema:Person;
+    rdfs:label "ABC Member".
+    
+ontology:Clergy a owl:Class;
+    rdfs:subClassOf schema:Person;
+    rdfs:label "Clergy".
+
+ontology:Convict a owl:Class;
+    rdfs:subClassOf schema:Person;
+    rdfs:label "Convict".
+
+ontology:Doctor a owl:Class;
+    rdfs:subClassOf schema:Person;
+    rdfs:label "Doctor".
+
+ontology:Government a owl:Class;
+    rdfs:subClassOf schema:Person;
+    rdfs:label "Government".
+
+ontology:Housekeeper a owl:Class;
+    rdfs:subClassOf schema:Person;
+    rdfs:label "Housekeeper".
+
+ontology:Lawyer a owl:Class;
+    rdfs:subClassOf schema:Person;
+    rdfs:label "Lawyer".
+
+ontology:Military a owl:Class;
+    rdfs:subClassOf ontology:Government;
+    rdfs:label "Military".
+
+ontology:Noble a owl:Class;
+    rdfs:subClassOf schema:Person;
+    rdfs:label "Noble".
+
+ontology:Patron-Minette a owl:Class;
+    rdfs:subClassOf schema:Person;
+    rdfs:label "Patron-Minette Gang Member".
+
+ontology:Police a owl:Class;
+    rdfs:subClassOf ontology:Government;
+    rdfs:label "Police".
+
+ontology:Seamstress a owl:Class;
+    rdfs:subClassOf schema:Person;
+    rdfs:label "Seamstress".
+
+ontology:Servant a owl:Class;
+    rdfs:subClassOf schema:Person;
+    rdfs:label "Servant".
+
+ontology:Thenardier a owl:Class;
+    rdfs:subClassOf schema:Person;
+    rdfs:label "Thenardier Family Member".
+
+ontology:Worker a owl:Class;
+    rdfs:subClassOf schema:Person;
+    rdfs:label "Worker".
+
+
 
 dataset:les-miserables a dcat:Dataset;
     dcterms:title "Les Miserables Character Network Data";

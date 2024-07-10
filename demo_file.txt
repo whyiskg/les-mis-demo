@@ -47,3 +47,20 @@ WHERE {
   ?c sio:hasPart ?interaction; a sio:Chapter; rdfs:label ?chapter.
 
 } order by ?timepoint
+
+
+PREFIX sio: <http://semanticscience.org/resource/>
+PREFIX schema: <http://schema.org/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT DISTINCT ?PersonA ?PersonB (count(distinct ?interaction) as ?interactions)
+WHERE {
+  ?interaction a sio:Interacting;
+               sio:existsAt [ a sio:TimeInterval; sio:hasValue ?timepoint];
+               sio:hasParticipant ?a, ?b.
+  filter(?a != ?b)
+  ?a a schema:Person; rdfs:label ?PersonA.
+  ?b a schema:Person; rdfs:label ?PersonB.
+  ?c sio:hasPart ?interaction; a sio:Chapter; rdfs:label ?chapter.
+
+} group by ?PersonA ?PersonB having (?interactions > 1) order by desc(?interactions)
